@@ -5,3 +5,4 @@ streamlit~=1.13.0
 mediapipe~=0.8.11
 streamlit_webrtc
 av~=9.2.0
+sklearn
