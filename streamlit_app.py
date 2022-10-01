@@ -38,8 +38,6 @@ mp_drawing_styles = mp.solutions.drawing_styles
 import cv2
 from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
 
-# faceCascade = cv2.CascadeClassifier(cv2.haarcascades + 'haarcascade_frontalface_default.xml')
-
 
 class VideoTransformer(VideoTransformerBase):
     def __init__(self):
@@ -61,4 +59,7 @@ class VideoTransformer(VideoTransformerBase):
         return annotated_image
 
 
-webrtc_streamer(key="example", video_transformer_factory=VideoTransformer)
+webrtc_streamer(key="example",
+                video_transformer_factory=VideoTransformer,
+                rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+                )
