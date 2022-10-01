@@ -1,6 +1,7 @@
-numpy
-opencv-python
-pandas
-streamlit
-mediapipe
+numpy~=1.23.3
+opencv-python~=4.6.0.66
+pandas~=1.5.0
+streamlit~=1.13.0
+mediapipe~=0.8.11
 streamlit_webrtc
+av~=9.2.0
