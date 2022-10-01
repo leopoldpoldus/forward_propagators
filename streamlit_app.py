@@ -43,7 +43,7 @@ class VideoTransformer(VideoProcessorBase):
                 min_tracking_confidence=0.5) as pose:
             results = pose.process(img)
             detected_pose = detect_pose(results)
-            st.write(detected_pose)
+            # st.write(detected_pose)
             print(detected_pose)
 
             self.buffer.append(detected_pose)
@@ -51,7 +51,10 @@ class VideoTransformer(VideoProcessorBase):
                 if len(self.buffer) > 2:
                     if detected_pose == 'standing' and (
                             self.buffer[-2] == 'sitting' or self.buffer[-2] == 'floor' or self.buffer[-2] == 'bed'):
-                        st.write('Warning standing detected')
+                        img = cv2.add(img, np.full(img.shape, (0, 0, 255), np.uint8))
+                    if detected_pose == 'standing':
+                        img = cv2.add(img, np.full(img.shape, (0, 0, 255), np.uint8))
+
             # Draw the pose annotation on the image.
             annotated_image = img.copy()
             mp_drawing.draw_landmarks(
@@ -60,7 +63,7 @@ class VideoTransformer(VideoProcessorBase):
             # annotated_image = cv2.cvtColor(annotated_image, cv2.COLOR_BGR2RGB)
             if len(self.buffer) > 5:
                 self.buffer.pop(0)
-
+            # annotated_image[:, :, 0] = 0
         return av.VideoFrame.from_ndarray(annotated_image, format="bgr24")
 
 
