@@ -3,4 +3,3 @@ opencv-python-headless
 pandas
 streamlit
 mediapipe
-libgl1-mesa-glx
