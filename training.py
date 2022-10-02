@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import OneHotEncoder
+from sklearn.metrics import confusion_matrix
 import pickle
 
 data = pd.read_csv('data.csv')
@@ -26,3 +27,23 @@ print(accuracy_score(y_test, clf.predict(X_test)))
 # Save the model
 with open('random_forest_classifier_v2.pkl', 'wb') as fid:
     pickle.dump(clf, fid)
+
+# plot confusion matrix
+# import matplotlib.pyplot as plt
+# import matplotlib
+# # matplotlib.use('TkAgg')
+# import seaborn as sns
+# import numpy as np
+#
+# cm = confusion_matrix(y_test.argmax(axis=1), clf.predict(X_test).argmax(axis=1))
+# cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+# plt.figure(figsize=(10, 10))
+# sns.heatmap(cm, annot=True, fmt='.2f', xticklabels=['bed', 'floor', 'sitting', 'standing'],
+#             yticklabels=['bed', 'floor', 'sitting', 'standing'])
+# plt.ylabel('Actual')
+# plt.xlabel('Predicted')
+# plt.savefig('confusion_matrix.png', dpi=500)
+# plt.show()
+
+
+
