@@ -53,7 +53,7 @@ jobs:
         run: pip install -r requirements.txt
         
       - name: Install dependencies 2
-        run: apt-get install ffmpeg libsm6 libxext6  -y
+        run: sudo apt-get install ffmpeg libsm6 libxext6  -y
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
